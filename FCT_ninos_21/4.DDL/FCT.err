@@ -1,0 +1,265 @@
+SQL> --crear el esquema con los privilegios mínimos que necesita
+SQL> drop user FCT cascade;
+
+Usuario borrado.
+
+SQL> create user FCT identified by fct
+  2  	     quota 100M on USERS;
+
+Usuario creado.
+
+SQL> grant create session, create table, create procedure to FCT;
+
+Concesión terminada correctamente.
+
+SQL> grant create public synonym, create sequence, create view to FCT;
+
+Concesión terminada correctamente.
+
+SQL> 
+SQL> --CONECTAR FCT FTC
+SQL> conn FCT/fct@delfos
+Conectado.
+SQL> 
+SQL> --creacion de tablas
+SQL> create table CICLOS(
+  2  	 idCic number(6),
+  3  	 nomCic varchar2(80),
+  4  	 constraint pk_01_CICLOS primary key(idCic),
+  5  	 constraint uq_01_CICLOS unique(nomCic)
+  6  );
+
+Tabla creada.
+
+SQL> create table MEDIOS(
+  2  	 idMed number(6),
+  3  	 nomMed varchar2(80),
+  4  	 constraint pk_01_MEDIOS primary key(idMed)
+  5  );
+
+Tabla creada.
+
+SQL> create table JERARQUIAS(
+  2  	 idJer number(6),
+  3  	 nomJer varchar2(80),
+  4  	 constraint pk_01_JERARQUIAS primary key(idJer)
+  5  );
+
+Tabla creada.
+
+SQL> create table PROFESORES(
+  2  	 idPro number(2),
+  3  	 NomPro varchar2(100),
+  4  	 DNI varchar2(9),
+  5  	 MensajeDefault varchar2(800),
+  6  	 CICLO number(6),
+  7  	 mailPro varchar2(100),
+  8  	 constraint pk_01_profe primary key(idPro),
+  9  	 constraint fk_01_profe foreign key(CICLO) references CICLOS(idCic),
+ 10  	 constraint uq_01_profe unique(mailPro),
+ 11  	 constraint uq_02_profe unique(NomPro),
+ 12  	 constraint uq_03_profe unique(DNI)
+ 13  );
+
+Tabla creada.
+
+SQL> create table ALUMNOS(
+  2  	 idAlu number(6),
+  3  	 NomAlu varchar2(80),
+  4  	 DNI varchar2(9) not null,
+  5  	 Fnac date  not null,
+  6  	 mailAlu varchar2(100),
+  7  	 TlfAlu number(9),
+  8  	 Linkedin varchar2(80),
+  9  	 Carnet number (1) not null,
+ 10  	 CICLO number(6),
+ 11  	 Idioma varchar2(80),
+ 12  	 PROFESOR number(6),
+ 13  	 constraint pk_01_ALUMNOS primary key(idAlu),
+ 14  	 constraint uq_01_ALUMNOS unique(NomAlu),
+ 15  	 constraint uq_02_ALUMNOS unique(DNI),
+ 16  	 constraint uq_03_ALUMNOS unique(mailAlu),
+ 17  	 constraint uq_04_ALUMNOS unique(TlfAlu),
+ 18  	 constraint uq_05_ALUMNOS unique(Linkedin),
+ 19  	 constraint fk_01_ALUMNOS foreign key(CICLO) references CICLOS(idCic),
+ 20  	 constraint fk_02_ALUMNOS foreign key(PROFESOR) references PROFESORES(idPro)
+ 21  );
+
+Tabla creada.
+
+SQL> create table PRACTICAS(
+  2  	 idPrac number(6),
+  3  	 Erasmus number(1) not null,
+  4  	 DesPrac varchar2(800),
+  5  	 FPini date,
+  6  	 FPfin date,
+  7  	 constraint pk_01_PRACTICAS primary key(idPrac),
+  8  	 constraint uq_01_PRACTICAS unique(DesPrac)
+  9  );
+
+Tabla creada.
+
+SQL> create table EMPRESAS(
+  2  	 idEmp number(6),
+  3  	 NomEm varchar2(80),
+  4  	 Logo blob,
+  5  	 DescEm varchar2(800),
+  6  	 Teletrabajo number(1),
+  7  	 Empleados varchar(200),
+  8  	 Actividad varchar2(800),
+  9  	 constraint pk_01_EMPRESA primary key(idEmp),
+ 10  	 constraint uq_01_EMPRESA unique(NomEm)
+ 11  );
+
+Tabla creada.
+
+SQL> create table PUESTOS(
+  2  	 idPue	number(6),
+  3  	 DesPue varchar2(800),
+  4  	 Cargo varchar2(80),
+  5  	 Jornada varchar2(60),
+  6  	 Expe number(2),
+  7  	 IdiomasP varchar2(80),
+  8  	 CarnetP number(1),
+  9  	 Movi varchar2(80),
+ 10  	 Titu number(1),
+ 11  	 Genero varchar2(80),
+ 12  	 PRACTICA number(6),
+ 13  	 EMPRESA number(6),
+ 14  	 constraint pk_01_PUESTOS primary key(idPue),
+ 15  	 constraint fk_01_PUESTOS foreign key (PRACTICA) references PRACTICAS(idPrac),
+ 16  	 constraint fk_02_PUESTOS foreign key (EMPRESA) references EMPRESAS(idEmp)
+ 17  );
+
+Tabla creada.
+
+SQL> create table TAREAS(
+  2  	 idTar number(6),
+  3  	 DesTar varchar2(900),
+  4  	 constraint pk_01_TAREAS primary key(idTar)
+  5  );
+
+Tabla creada.
+
+SQL> create table PERSONAS(
+  2  	 idPer number(6),
+  3  	 NomPer varchar2(80),
+  4  	 Jerarquia number(6),
+  5  	 constraint pk_01_PERSONAS primary key(idPer),
+  6  	 constraint fk_01_PERSONAS foreign key(Jerarquia) references JERARQUIAS(idJer)
+  7  );
+
+Tabla creada.
+
+SQL> create table TRABAJOS(
+  2  	 idTra number(6),
+  3  	 Puesto varchar2(80),
+  4  	 Sueldo number(6),
+  5  	 EMPRESA number(6),
+  6  	 constraint pk_01_TRABAJOS primary key(idTra),
+  7  	 constraint fk_01_TRABAJOS foreign key(EMPRESA) references EMPRESAS(idEmp)
+  8  );
+
+Tabla creada.
+
+SQL> create table SEDES(
+  2  	 idSede number(6),
+  3  	 NomSed varchar2(800),
+  4  	 Ubicacion varchar2(800),
+  5  	 Direccion varchar2(800),
+  6  	 EMPRESA number(6),
+  7  	 constraint pk_01_SEDES primary key(idSede),
+  8  	 constraint uq_01_SEDES unique(NomSed),
+  9  	 constraint uq_02_SEDES unique(Direccion),
+ 10  	 constraint fk_01_SEDES foreign key (EMPRESA) references EMPRESAS(idEmp)
+ 11  );
+
+Tabla creada.
+
+SQL> create table CONTACTOS(
+  2  	 IdCont number(6),
+  3  	 FCont date,
+  4  	 Mensaje varchar2(800),
+  5  	 RESPUESTA number(6),
+  6  	 PROFESOR number(6),
+  7  	 Medio varchar2(80),
+  8  	 constraint pk_01_CONTACTO primary key(IdCont),
+  9  	 constraint fk_01_CONTACTO foreign key (PROFESOR) references PROFESORES(idPro)
+ 10  );
+
+Tabla creada.
+
+SQL> alter table CONTACTOS add constraint fk_02_CONTACTO foreign key(RESPUESTA) references CONTACTOS(IdCont);
+
+Tabla modificada.
+
+SQL> create table TECNOLOGIAS(
+  2  	 idTec number(6),
+  3  	 NomTec varchar2(800),
+  4  	 Uso varchar2(800),
+  5  	 constraint pk_01_TECNOLOGIAS primary key(idTec)
+  6  );
+
+Tabla creada.
+
+SQL> create table HERRAMIENTAS(
+  2  	 idHerra number(6),
+  3  	 nomHerra varchar2(100),
+  4  	 constraint pk_01_HERRAMIENTAS primary key(idHerra)
+  5  );
+
+Tabla creada.
+
+SQL> create table VIDAS_LABORALES(
+  2  	 ALUMNO number(6),
+  3  	 TRABAJO number(6),
+  4  	 Fini date,
+  5  	 Ffin date,
+  6  	 FCT number(1),
+  7  	 constraint pk_01_vidalab primary key(ALUMNO,TRABAJO),
+  8  	 constraint fk_01_VIDA foreign key(ALUMNO) references ALUMNOS(idAlu),
+  9  	 constraint fk_02_VIDA foreign key(TRABAJO) references TRABAJOS(idTra)
+ 10  );
+
+Tabla creada.
+
+SQL> create table TOOLBOX(
+  2  	 TAREA number(6),
+  3  	 HERRAMIENTA number(6),
+  4  	 constraint fk_01_toolbox foreign key(TAREA) references TAREAS(idTar),
+  5  	 constraint fk_02_toolbox foreign key(HERRAMIENTA) references HERRAMIENTAS(idHerra),
+  6  	 constraint pk_toolbox primary key(TAREA,HERRAMIENTA)
+  7  );
+
+Tabla creada.
+
+SQL> create table COMUNICACIONES(
+  2  	 PERSONA number(6),
+  3  	 CONTACTO number(6),
+  4  	 constraint fk_01_comunica foreign key(PERSONA) references PERSONAS(idPer),
+  5  	 constraint fk_02_comunica foreign key(CONTACTO) references CONTACTOS(IdCont)
+  6  );
+
+Tabla creada.
+
+SQL> create table SERVICIOS(
+  2  	 EMPRESA number(6),
+  3  	 TECNOLOGIA  number(6),
+  4  	 constraint fk_01_servicio foreign key(EMPRESA) references EMPRESAS(idEmp),
+  5  	 constraint fk_02_servicio foreign key(TECNOLOGIA) references TECNOLOGIAS(idTec)
+  6  );
+
+Tabla creada.
+
+SQL> create table SOLUCIONES(
+  2  	 TECNOLOGIA number(6),
+  3  	 HERRAMIENTA number(6),
+  4  	 constraint fk_01_solu foreign key(TECNOLOGIA) references TECNOLOGIAS(idTec),
+  5  	 constraint fk_02_solu foreign key(HERRAMIENTA) references HERRAMIENTAS(idHerra)
+  6  );
+
+Tabla creada.
+
+SQL> 
+SQL> 
+SQL> spo off
