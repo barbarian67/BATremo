@@ -2,5 +2,6 @@
 set echo on
 set serveroutput on
 alter session set NLS_DATE_FORMAT='DD-MM-YY';
+oink
 spo po.err
 spo off
