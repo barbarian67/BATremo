@@ -137,17 +137,14 @@ create table PRACTICAS(
 	tele char(1),
 	eplus char(1),
 	ciclo number,
+	docente number,
+	laboral number,
 	constraint ck_tele check(tele in ('S', 'N')),	
-	constraint ck_erasmus check(eplus in ('S', 'N')),	
+	constraint ck_erasmus check(eplus in ('S', 'N')),
+	constraint fk_07 foreign key(docente) references PROFESORES(idProf),	
+	constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),	
 	constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
 	constraint pk_practicas primary key(idPra)		
-);
-create table TUTELAS(
-	empleado number,
-	practica number,
-	constraint fk_07_A foreign key(empleado) references EMPLEADOS(idem),
-	constraint fk_07_B foreign key(practica) references PRACTICAS(idpra),
-	constraint pk_tutelas primary key(empleado,practica)		
 );
 create table OFERTAS(
 	idOfe number,
