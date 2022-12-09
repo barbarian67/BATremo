@@ -520,9 +520,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.9050967"
-     inkscape:cx="458.51454"
-     inkscape:cy="408.24367"
+     inkscape:zoom="1.8101934"
+     inkscape:cx="535.30192"
+     inkscape:cy="399.68105"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="mm"
@@ -2835,6 +2835,40 @@
            id="rect4862-9-9-3" /></flowRegion><flowPara
          id="flowPara4864-7-3-7"
          style="font-weight:bold;font-size:10.3722px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'Sans Bold'">1:N</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6177-6-0-5-7-1-2-3"
+       style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:0.993535;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.57039731,0,0,0.51398793,243.34953,864.37625)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion6179-8-9-3-0-2-0-6"
+         style="font-family:sans-serif"><rect
+           id="rect6181-7-5-5-9-6-8-7"
+           width="86.282356"
+           height="19.751604"
+           x="277.92868"
+           y="94.984741"
+           style="font-size:14px;font-family:sans-serif" /></flowRegion><flowPara
+         id="flowPara6183-64-8-6-3-2-7-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Courier 10 Pitch';-inkscape-font-specification:'Courier 10 Pitch'">es tutelada</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6073-8-7-3-6-2-6-3-4-3"
+       style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:0.993535;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.5342585,0,0,0.43359343,402.70718,791.21576)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion6075-1-5-10-0-9-0-9-7-5"
+         style="font-family:sans-serif"><rect
+           id="rect6077-0-5-7-34-1-6-3-6-6"
+           width="46.626194"
+           height="21.941738"
+           x="1.8284781"
+           y="298.86005"
+           style="font-size:18px;font-family:sans-serif" /></flowRegion><flowPara
+         id="flowPara6079-4-9-1-6-2-2-9-9-2"
+         style="font-size:15.7498px;line-height:1.25;font-family:sans-serif">(1,1)</flowPara></flowRoot>
   </g>
   <g
      inkscape:groupmode="layer"
