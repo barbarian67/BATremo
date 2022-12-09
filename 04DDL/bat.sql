@@ -13,7 +13,7 @@ grant create session, create table, create procedure to BAT;
 grant create public synonym, create sequence, create view to BAT;
 
 --conecto con la cuenta que va a albergar el esquema
-conn BAT/bat@fa
+conn BAT/bat@delfos
 --creación de tablas
 create table FORMAS(
 	idFor number,
@@ -141,7 +141,7 @@ create table PRACTICAS(
 	laboral number,
 	constraint ck_tele check(tele in ('S', 'N')),	
 	constraint ck_erasmus check(eplus in ('S', 'N')),
-	constraint fk_07 foreign key(docente) references PROFESORES(idProf),	
+	constraint fk_07 foreign key(docente) references PROFESORES(profesor),	
 	constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),	
 	constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
 	constraint pk_practicas primary key(idPra)		
