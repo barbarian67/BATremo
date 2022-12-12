@@ -17,7 +17,7 @@ conn BAT/bat@delfos
 --creación de tablas
 create table FORMAS(
 	idFor number,
-	desForm varchar(10),
+	desFor varchar(15),
 	constraint pk_formas primary key(idFor)
 );
 create table RAMOS(
@@ -80,6 +80,8 @@ create table EMPRESAS(
 create table SEDES(
 	idsed number,
 	cpsed number,
+	empresa number,
+	constraint fk_13 foreign key(empresa) references EMPRESAS(idEmP),
 	constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
 	constraint pk_sedes primary key(idsed)
 );
@@ -142,7 +144,7 @@ create table PRACTICAS(
 	constraint ck_tele check(tele in ('S', 'N')),	
 	constraint ck_erasmus check(eplus in ('S', 'N')),
 	constraint fk_07 foreign key(docente) references PROFESORES(profesor),	
-	constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),	
+	constraint fk_14 foreign key(laboral) references CONTACTOS(contacto),	
 	constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
 	constraint pk_practicas primary key(idPra)		
 );

@@ -1,0 +1,390 @@
+SQL> alter session set NLS_DATE_FORMAT='DD-MM-YY';
+
+Sesión modificada.
+
+SQL> -----FORMAS-------------------
+SQL> insert into FORMAS(idfor, desfor) values (1,'S.L.');
+
+1 fila creada.
+
+SQL> insert into FORMAS(idfor, desfor) values (2,'S.L.U.');
+
+1 fila creada.
+
+SQL> insert into FORMAS(idfor, desfor) values (3,'S.L.L.');
+
+1 fila creada.
+
+SQL> insert into FORMAS(idfor, desfor) values (4,'Autónomo');
+
+1 fila creada.
+
+SQL> insert into FORMAS(idfor, desfor) values (5,'C.B.');
+
+1 fila creada.
+
+SQL> insert into FORMAS(idfor, desfor) values (6,'S.A.');
+
+1 fila creada.
+
+SQL> insert into FORMAS(idfor, desfor) values (7,'S.A.U.');
+
+1 fila creada.
+
+SQL> insert into FORMAS(idfor, desfor) values (8,'Institución');
+
+1 fila creada.
+
+SQL> ----RAMOS-----------------------
+SQL> insert into RAMOS(idram, desram) values (1,'Construcción');
+
+1 fila creada.
+
+SQL> insert into RAMOS(idram, desram) values (2,'Sanitario');
+
+1 fila creada.
+
+SQL> insert into RAMOS(idram, desram) values (3,'Hosteleria');
+
+1 fila creada.
+
+SQL> insert into RAMOS(idram, desram) values (4,'Informática');
+
+1 fila creada.
+
+SQL> insert into RAMOS(idram, desram) values (5,'Consultoría informática');
+
+1 fila creada.
+
+SQL> insert into RAMOS(idram, desram) values (6,'Desarrollo');
+
+1 fila creada.
+
+SQL> insert into RAMOS(idram, desram) values (7,'Formación');
+
+1 fila creada.
+
+SQL> ----TAMAÑOS---------------------------------------------
+SQL> insert into TAMANOS(idtam,destam) values(1,'Microempresa');
+
+1 fila creada.
+
+SQL> insert into TAMANOS(idtam,destam) values(2,'Pequeña');
+
+1 fila creada.
+
+SQL> insert into TAMANOS(idtam,destam) values(3,'Mediana');
+
+1 fila creada.
+
+SQL> insert into TAMANOS(idtam,destam) values(4,'Grande');
+
+1 fila creada.
+
+SQL> ----CICLOS---------------------------------------------
+SQL> insert into CICLOS(idcic,abre) values(1,'ASIR');
+
+1 fila creada.
+
+SQL> insert into CICLOS(idcic,abre) values(2,'DAM');
+
+1 fila creada.
+
+SQL> insert into CICLOS(idcic,abre) values(3,'DAW');
+
+1 fila creada.
+
+SQL> insert into CICLOS(idcic,abre) values(4,'SMR');
+
+1 fila creada.
+
+SQL> ---DISTRITOS---------------------------------------------
+SQL> insert into DISTRITOS(cp,distri) values(11011,'Cádiz, Cortadura');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11100,'Cádiz, San Fernando');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11500,'Cádiz, El Puerto de Sta. María');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11140,'Cádiz, Conil de la Fra.');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11002,'Cádiz, La Viña-Caleta');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(29130,'Málaga, Alhaurín de la Torre');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11007,'Cádiz, Bahía Blanca');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11179,'Cádiz, Medina-Sidonia');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11408,'Cádiz, Jerez de la Fra. Sur');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11540,'Cádiz, Sanlúcar de Barrameda');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(11650,'Cádiz, Villamartín');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(21440,'Huelva, Lepe');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(30011,'Murcia');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values(46005,'Valencia');
+
+1 fila creada.
+
+SQL> ---ALUMNOS---------------------------------------------
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (1,'Montesino Fernando, Carlos',null,null,null,null,'13-11-02','H',0,11100);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (2,'Peralta Guerrero, Pedro',null,null,null,null,'15-12-03','H',0,11179);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (3,'Riol Sánchez, José María',null,null,null,null,'14-10-93','H',0,11007);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (4,'Rodríguez Guerrero, José Manuel',null,null,null,null,'04-05-03','H',0,11100);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (5,'Sánchez Ureba, Juan María',null,null,null,null,'24-05-01','H',0,11140);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (6,'Cosme Mateo, Sergio',null,null,null,null,'23-02-01','H',0,11100);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (7,'Silva Bravo, Israel',null,null,null,null,null,'H',0,11002);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (8,'García-Rincón Arauz, Luis Miguel',null,null,null,null,'17-05-93','H',0,29130);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (9,'Rodríguez Medina, Abraham',null,null,null,null,null,'H',0,11408);
+
+1 fila creada.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (10,'Guerrero Luna, Miguel',null,null,null,null,null,'H',0,11100);
+
+1 fila creada.
+
+SQL> ---TRAYECTOS---------------------------------------------
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,1,null);
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,2,null);
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,3,null);
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,4,null);
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (4,4,'23-06-21');
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,5,null);
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,6,null);
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,7,null);
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (4,7,'20-06-18');
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,8,null);
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,9,'22-06-22');
+
+1 fila creada.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,10,'22-06-22');
+
+1 fila creada.
+
+SQL> 
+SQL> ---EMPRESAS-y--SEDES-------------------------------------------
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam)
+  2  values(1, 'Pascual y Pascual','José Manuel Pascual Pascual',250,6,2,4);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(1,11002,1);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(2,11500,1);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(3,11540,1);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(4,11650,1);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(5,21440,1);
+
+1 fila creada.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam)
+  2  values(2, 'Zaporito','Junta de Andalucia',250,8,7,4);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(6,11100,2);
+
+1 fila creada.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam)
+  2  values(3, 'Inforges','Inforges IT Services',210,1,4,3);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(7,11100,3);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(8,30011,3);
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(9,46005,3);
+
+1 fila creada.
+
+SQL> --CONTRATOS-------------------------------------------------------
+SQL> insert into CONTRATOS(empresa,alumno,inicon,fincon,pra)
+  2  values(1,10,'25-06-22',null, 'N');
+
+1 fila creada.
+
+SQL> --EMPLEADOS-------------------------------------------------------
+SQL> insert into EMPLEADOS(idem,nomEm) values(1,'Jaime');
+
+1 fila creada.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(2,'María');
+
+1 fila creada.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(3,'Ana');
+
+1 fila creada.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(4,'Miguel');
+
+1 fila creada.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(5,'Ricardo');
+
+1 fila creada.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(6,'Jesús Cazorla');
+
+1 fila creada.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(7,'Gema Silva');
+
+1 fila creada.
+
+SQL> 
+SQL> --CONTACTOS-y-PROFESORES-----------------------------------------------------
+SQL> insert into CONTACTOS(contacto,mailcon,movcon) values(6,'cazorlab@gmail.com',null);
+
+1 fila creada.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon) values(7,'info@infor-ges.com','671672244');
+
+1 fila creada.
+
+SQL> insert into PROFESORES(profesor) values(1);
+
+1 fila creada.
+
+SQL> insert into PROFESORES(profesor) values(2);
+
+1 fila creada.
+
+SQL> insert into PROFESORES(profesor) values(3);
+
+1 fila creada.
+
+SQL> insert into PROFESORES(profesor) values(4);
+
+1 fila creada.
+
+SQL> insert into PROFESORES(profesor) values(5);
+
+1 fila creada.
+
+SQL> --PRACTICAS
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral)
+  2  values(1,'21-03-22','06-06-22','N','N',1,1,6);
+
+1 fila creada.
+
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral)
+  2  values(2,'21-02-21','18-06-22','N','N',4,2,7);
+
+1 fila creada.
+
+SQL> 
+SQL> spo off

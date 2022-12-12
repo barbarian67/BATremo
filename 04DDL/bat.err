@@ -25,7 +25,7 @@ Conectado.
 SQL> --creación de tablas
 SQL> create table FORMAS(
   2  	     idFor number,
-  3  	     desForm varchar(10),
+  3  	     desFor varchar(15),
   4  	     constraint pk_formas primary key(idFor)
   5  );
 
@@ -112,9 +112,11 @@ Tabla creada.
 SQL> create table SEDES(
   2  	     idsed number,
   3  	     cpsed number,
-  4  	     constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
-  5  	     constraint pk_sedes primary key(idsed)
-  6  );
+  4  	     empresa number,
+  5  	     constraint fk_13 foreign key(empresa) references EMPRESAS(idEmP),
+  6  	     constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
+  7  	     constraint pk_sedes primary key(idsed)
+  8  );
 
 Tabla creada.
 
@@ -198,15 +200,12 @@ SQL> create table PRACTICAS(
  10  	     constraint ck_tele check(tele in ('S', 'N')),
  11  	     constraint ck_erasmus check(eplus in ('S', 'N')),
  12  	     constraint fk_07 foreign key(docente) references PROFESORES(profesor),
- 13  	     constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),
+ 13  	     constraint fk_14 foreign key(laboral) references CONTACTOS(contacto),
  14  	     constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
  15  	     constraint pk_practicas primary key(idPra)
  16  );
-	constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),
-	                                                           *
-ERROR en línea 13:
-ORA-00904: "IDCON": identificador no válido 
 
+Tabla creada.
 
 SQL> create table OFERTAS(
   2  	     idOfe number,
