@@ -57,7 +57,7 @@ SQL> create table CICLOS(
 Tabla creada.
 
 SQL> create table DISTRITOS(
-  2  	     cp number,
+  2  	     cp varchar2(15),
   3  	     distri varchar2(70),
   4  	     constraint pk_municipios primary key(cp)
   5  );
@@ -74,7 +74,7 @@ SQL> create table ALUMNOS(
   8  	     fnac date,
   9  	     sex char(1),
  10  	     dis number(3) default 0,
- 11  	     cpAlu number,
+ 11  	     cpAlu varchar2(15),
  12  	     constraint fk_cpalumnos foreign key(cpAlu) references DISTRITOS(cp),
  13  	     constraint ck_sex check(sex in ('M', 'H')),
  14  	     constraint pk_alumnos primary key(idAlu)
@@ -111,7 +111,7 @@ Tabla creada.
 
 SQL> create table SEDES(
   2  	     idsed number,
-  3  	     cpsed number,
+  3  	     cpsed varchar2(15),
   4  	     empresa number,
   5  	     constraint fk_13 foreign key(empresa) references EMPRESAS(idEmP),
   6  	     constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
@@ -145,10 +145,12 @@ Tabla creada.
 SQL> create table CONTACTOS(
   2  	     contacto number,
   3  	     mailcon varchar2(50),
-  4  	     movcon  varchar2(9),
-  5  	     constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
-  6  	     constraint pk_contactos primary key(contacto)
-  7  );
+  4  	     movcon  varchar2(15),
+  5  	     empresa number,
+  6  	     constraint fk_03 foreign key(empresa) references EMPRESAS(idEmp),
+  7  	     constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
+  8  	     constraint pk_contactos primary key(contacto)
+  9  );
 
 Tabla creada.
 
@@ -197,13 +199,15 @@ SQL> create table PRACTICAS(
   7  	     ciclo number,
   8  	     docente number,
   9  	     laboral number,
- 10  	     constraint ck_tele check(tele in ('S', 'N')),
- 11  	     constraint ck_erasmus check(eplus in ('S', 'N')),
- 12  	     constraint fk_07 foreign key(docente) references PROFESORES(profesor),
- 13  	     constraint fk_14 foreign key(laboral) references CONTACTOS(contacto),
- 14  	     constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
- 15  	     constraint pk_practicas primary key(idPra)
- 16  );
+ 10  	     alumno number,
+ 11  	     constraint ck_tele check(tele in ('S', 'N')),
+ 12  	     constraint ck_erasmus check(eplus in ('S', 'N')),
+ 13  	     constraint fk_15 foreign key(alumno) references ALUMNOS(idAlu),
+ 14  	     constraint fk_07 foreign key(docente) references PROFESORES(profesor),
+ 15  	     constraint fk_14 foreign key(laboral) references CONTACTOS(contacto),
+ 16  	     constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
+ 17  	     constraint pk_practicas primary key(idPra)
+ 18  );
 
 Tabla creada.
 

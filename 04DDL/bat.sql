@@ -37,7 +37,7 @@ create table CICLOS(
 	constraint pk_ciclos primary key(idCic)
 );
 create table DISTRITOS(
-	cp number,
+	cp varchar2(15),
 	distri varchar2(70),
 	constraint pk_municipios primary key(cp)
 );
@@ -51,7 +51,7 @@ create table ALUMNOS(
 	fnac date,
 	sex char(1),
 	dis number(3) default 0,
-	cpAlu number,
+	cpAlu varchar2(15),
 	constraint fk_cpalumnos foreign key(cpAlu) references DISTRITOS(cp),
 	constraint ck_sex check(sex in ('M', 'H')),	
 	constraint pk_alumnos primary key(idAlu)
@@ -79,7 +79,7 @@ create table EMPRESAS(
 );
 create table SEDES(
 	idsed number,
-	cpsed number,
+	cpsed varchar2(15),
 	empresa number,
 	constraint fk_13 foreign key(empresa) references EMPRESAS(idEmP),
 	constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
@@ -104,7 +104,9 @@ create table EMPLEADOS(
 create table CONTACTOS(
 	contacto number,
 	mailcon varchar2(50),
-	movcon	varchar2(9),
+	movcon	varchar2(15),
+	empresa	number,
+	constraint fk_03 foreign key(empresa) references EMPRESAS(idEmp),
 	constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
 	constraint pk_contactos primary key(contacto)	
 );
@@ -141,8 +143,10 @@ create table PRACTICAS(
 	ciclo number,
 	docente number,
 	laboral number,
+	alumno number,
 	constraint ck_tele check(tele in ('S', 'N')),	
 	constraint ck_erasmus check(eplus in ('S', 'N')),
+	constraint fk_15 foreign key(alumno) references ALUMNOS(idAlu),	
 	constraint fk_07 foreign key(docente) references PROFESORES(profesor),	
 	constraint fk_14 foreign key(laboral) references CONTACTOS(contacto),	
 	constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
