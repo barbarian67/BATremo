@@ -101,11 +101,12 @@ SQL> create table EMPRESAS(
   6  	     forma number,
   7  	     ramo number,
   8  	     tam number,
-  9  	     constraint fk_forma foreign key(forma) references FORMAS(idFor),
- 10  	     constraint fk_ramo foreign key(ramo) references RAMOS(idRam),
- 11  	     constraint fk_tam foreign key(tam) references TAMANOS(idTam),
- 12  	     constraint pk_empresas primary key(idEmp)
- 13  );
+  9  	     web varchar2(50),
+ 10  	     constraint fk_forma foreign key(forma) references FORMAS(idFor),
+ 11  	     constraint fk_ramo foreign key(ramo) references RAMOS(idRam),
+ 12  	     constraint fk_tam foreign key(tam) references TAMANOS(idTam),
+ 13  	     constraint pk_empresas primary key(idEmp)
+ 14  );
 
 Tabla creada.
 

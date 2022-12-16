@@ -8,3 +8,6 @@ select nomEmp "Convenio", nomAlu "Alumno"
 from PRACTICAS inner join CONTACTOS  on laboral=contacto
 			inner join ALUMNOS on alumno=idAlu
 			inner join EMPRESAS on empresa=idEmp;
+			
+select nomEmp "Empresa", web "Página"
+from EMPRESAS;

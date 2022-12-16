@@ -72,6 +72,7 @@ create table EMPRESAS(
 	forma number,
 	ramo number,
 	tam number,
+	web varchar2(50),
 	constraint fk_forma foreign key(forma) references FORMAS(idFor),
 	constraint fk_ramo foreign key(ramo) references RAMOS(idRam),
 	constraint fk_tam foreign key(tam) references TAMANOS(idTam),

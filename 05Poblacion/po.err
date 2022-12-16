@@ -69,6 +69,10 @@ SQL> insert into RAMOS(idram, desram) values (7,'Formación');
 
 1 fila creada.
 
+SQL> insert into RAMOS(idram, desram) values (8,'Distribución de productos eléctricos');
+
+1 fila creada.
+
 SQL> ----TAMAÑOS---------------------------------------------
 SQL> insert into TAMANOS(idtam,destam) values(1,'Microempresa');
 
@@ -161,6 +165,18 @@ SQL> insert into DISTRITOS(cp,distri) values('46005','Valencia');
 1 fila creada.
 
 SQL> insert into DISTRITOS(cp,distri) values('D02','Dublín 2');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values('11005','Cádiz Catedraĺ');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values('D11','Dublín 11');
+
+1 fila creada.
+
+SQL> insert into DISTRITOS(cp,distri) values('15510','Cádiz Puerto Real');
 
 1 fila creada.
 
@@ -266,8 +282,8 @@ SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,10,'22-06-22');
 
 SQL> 
 SQL> ---EMPRESAS-y--SEDES-------------------------------------------
-SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam)
-  2  values(1, 'Pascual y Pascual','José Manuel Pascual Pascual',250,6,2,4);
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(1, 'Pascual y Pascual','José Manuel Pascual Pascual',250,6,2,4,'https://www.josemanuelpascualpascual.es');
 
 1 fila creada.
 
@@ -292,18 +308,24 @@ SQL> insert into SEDES(idsed,cpsed,empresa)values(5,'21440',1);
 1 fila creada.
 
 SQL> 
-SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam)
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
   2  values(2, 'Zaporito','Junta de Andalucia',250,8,7,4);
+values(2, 'Zaporito','Junta de Andalucia',250,8,7,4)
+*
+ERROR en línea 2:
+ORA-00947: no hay suficientes valores 
 
-1 fila creada.
 
-SQL> insert into SEDES(idsed,cpsed,empresa)values(6,'11100',2);
+SQL> insert into SEDES(idsed,cpsed,empresa)values(6,'11100',2,'https://www.cifpmaritimozaporito.com/');
+insert into SEDES(idsed,cpsed,empresa)values(6,'11100',2,'https://www.cifpmaritimozaporito.com/')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
 
-1 fila creada.
 
 SQL> 
-SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam)
-  2  values(3, 'Inforges','Inforges IT Services',210,1,4,3);
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(3, 'Inforges','Inforges IT Services',210,1,4,3,'https://inforges.es/');
 
 1 fila creada.
 
@@ -320,8 +342,8 @@ SQL> insert into SEDES(idsed,cpsed,empresa)values(9,'46005',3);
 1 fila creada.
 
 SQL> 
-SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam)
-  2  values(4, '4Property','4Property Consult',150,9,1,2);
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(4, '4Property','4Property Consult',150,9,1,2,'https://www.4property.com');
 
 1 fila creada.
 
@@ -329,9 +351,60 @@ SQL> insert into SEDES(idsed,cpsed,empresa)values(10,'D02',4);
 
 1 fila creada.
 
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(5, 'RAID1','Carlos David Benítez Marroquín',4,9,5,1,'https://raid1.es/');
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(11,'D02',5);
+
+1 fila creada.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(6, 'NetSpeed','NetSpeed',50,9,5,2,'https://www.netspeed.ie/');
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(12,'D11',6);
+
+1 fila creada.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(7, 'Elecam','Elecam',300,6,8,3, 'https://www.elecam.com');
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(13,'11011',7);
+
+1 fila creada.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(8, 'Eritea','Eritea Sistemas',5,2,5,1,'https://eritea.es/');
+
+1 fila creada.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(14,'15510',8);
+
+1 fila creada.
+
+SQL> 
 SQL> --CONTRATOS-------------------------------------------------------
 SQL> insert into CONTRATOS(empresa,alumno,inicon,fincon,pra)
   2  values(1,10,'25-06-22',null, 'N');
+
+1 fila creada.
+
+SQL> insert into CONTRATOS(empresa,alumno,inicon,fincon,pra)
+  2  values(6,9,'20-09-22',null, 'N');
+
+1 fila creada.
+
+SQL> insert into CONTRATOS(empresa,alumno,inicon,fincon,pra)
+  2  values(7,7,'15-07-22',null, 'N');
 
 1 fila creada.
 
@@ -368,16 +441,44 @@ SQL> insert into EMPLEADOS(idem,nomEm) values(8,'John Kennedy');
 
 1 fila creada.
 
-SQL> --CONTACTOS-y-PROFESORES-----------------------------------------------------
-SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(6,'cazorlab@gmail.com',null,2);
+SQL> insert into EMPLEADOS(idem,nomEm) values(9,'Carlos David Benítez Marroquín');
 
 1 fila creada.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(10,'Paul McLoughlin');
+
+1 fila creada.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(11,'Juan Manuel Nogueira');
+
+1 fila creada.
+
+SQL> --CONTACTOS-y-PROFESORES-----------------------------------------------------
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(6,'cazorlab@gmail.com',null,2);
+insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(6,'cazorlab@gmail.com',null,2)
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (BAT.FK_03) violada - clave principal no
+encontrada 
+
 
 SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(7,'info@infor-ges.com','671672244',3);
 
 1 fila creada.
 
 SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(8,'info@4property.com','35314977705',4);
+
+1 fila creada.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(9,'info@raid1.es','956222555',5);
+
+1 fila creada.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(10,'info@netspeed.ie',null,6);
+
+1 fila creada.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(11,'info@eritea.es','856211442',8);
 
 1 fila creada.
 
@@ -404,8 +505,12 @@ SQL> insert into PROFESORES(profesor) values(5);
 SQL> --PRACTICAS
 SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
   2  values(1,'21-03-22','06-06-22','N','N',1,1,6,7);
+insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (BAT.FK_14) violada - clave principal no
+encontrada 
 
-1 fila creada.
 
 SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
   2  values(2,'21-02-21','18-06-22','N','N',4,2,7,4);
@@ -417,6 +522,14 @@ SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alum
 
 1 fila creada.
 
-SQL> 
-SQL> 
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
+  2  values(5,'15-09-22','15-12-22','N','N',1,1,9,6);
+
+1 fila creada.
+
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
+  2  values(6,'21-03-22','20-06-22','N','S',1,1,10,9);
+
+1 fila creada.
+
 SQL> spo off
