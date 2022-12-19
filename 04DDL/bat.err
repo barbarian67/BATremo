@@ -25,7 +25,7 @@ Conectado.
 SQL> --creación de tablas
 SQL> create table FORMAS(
   2  	     idFor number,
-  3  	     desForm varchar(10),
+  3  	     desFor varchar(15),
   4  	     constraint pk_formas primary key(idFor)
   5  );
 
@@ -57,7 +57,7 @@ SQL> create table CICLOS(
 Tabla creada.
 
 SQL> create table DISTRITOS(
-  2  	     cp number,
+  2  	     cp varchar2(15),
   3  	     distri varchar2(70),
   4  	     constraint pk_municipios primary key(cp)
   5  );
@@ -74,7 +74,7 @@ SQL> create table ALUMNOS(
   8  	     fnac date,
   9  	     sex char(1),
  10  	     dis number(3) default 0,
- 11  	     cpAlu number,
+ 11  	     cpAlu varchar2(70),
  12  	     constraint fk_cpalumnos foreign key(cpAlu) references DISTRITOS(cp),
  13  	     constraint ck_sex check(sex in ('M', 'H')),
  14  	     constraint pk_alumnos primary key(idAlu)
@@ -101,20 +101,23 @@ SQL> create table EMPRESAS(
   6  	     forma number,
   7  	     ramo number,
   8  	     tam number,
-  9  	     constraint fk_forma foreign key(forma) references FORMAS(idFor),
- 10  	     constraint fk_ramo foreign key(ramo) references RAMOS(idRam),
- 11  	     constraint fk_tam foreign key(tam) references TAMANOS(idTam),
- 12  	     constraint pk_empresas primary key(idEmp)
- 13  );
+  9  	     web varchar2(70),
+ 10  	     constraint fk_forma foreign key(forma) references FORMAS(idFor),
+ 11  	     constraint fk_ramo foreign key(ramo) references RAMOS(idRam),
+ 12  	     constraint fk_tam foreign key(tam) references TAMANOS(idTam),
+ 13  	     constraint pk_empresas primary key(idEmp)
+ 14  );
 
 Tabla creada.
 
 SQL> create table SEDES(
   2  	     idsed number,
-  3  	     cpsed number,
-  4  	     constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
-  5  	     constraint pk_sedes primary key(idsed)
-  6  );
+  3  	     cpsed varchar2(70),
+  4  	     empresa number,
+  5  	     constraint fk_13 foreign key(empresa) references EMPRESAS(idEmp),
+  6  	     constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
+  7  	     constraint pk_sedes primary key(idsed)
+  8  );
 
 Tabla creada.
 
@@ -143,10 +146,12 @@ Tabla creada.
 SQL> create table CONTACTOS(
   2  	     contacto number,
   3  	     mailcon varchar2(50),
-  4  	     movcon  varchar2(9),
-  5  	     constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
-  6  	     constraint pk_contactos primary key(contacto)
-  7  );
+  4  	     movcon  varchar2(20),
+  5  	     empresa number,
+  6  	     constraint fk_03 foreign key(empresa) references EMPRESAS(idEmp),
+  7  	     constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
+  8  	     constraint pk_contactos primary key(contacto)
+  9  );
 
 Tabla creada.
 
@@ -195,31 +200,31 @@ SQL> create table PRACTICAS(
   7  	     ciclo number,
   8  	     docente number,
   9  	     laboral number,
- 10  	     constraint ck_tele check(tele in ('S', 'N')),
- 11  	     constraint ck_erasmus check(eplus in ('S', 'N')),
- 12  	     constraint fk_07 foreign key(docente) references PROFESORES(profesor),
- 13  	     constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),
- 14  	     constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
- 15  	     constraint pk_practicas primary key(idPra)
- 16  );
-	constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),
-	                                                           *
-ERROR en línea 13:
-ORA-00904: "IDCON": identificador no válido 
+ 10  	     alumno number,
+ 11  	     constraint ck_tele check(tele in ('S', 'N')),
+ 12  	     constraint ck_erasmus check(eplus in ('S', 'N')),
+ 13  	     constraint fk_07 foreign key(docente) references PROFESORES(profesor),
+ 14  	     constraint fk_14 foreign key(laboral) references CONTACTOS(contacto),
+ 15  	     constraint fk_15 foreign key(alumno) references ALUMNOS(idAlu),
+ 16  	     constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
+ 17  	     constraint pk_practicas primary key(idPra)
+ 18  );
 
+Tabla creada.
 
 SQL> create table OFERTAS(
   2  	     idOfe number,
-  3  	     fofe date,
-  4  	     kas number(8,2),
-  5  	     tele char(1),
-  6  	     contacto number,
-  7  	     empresa number,
-  8  	     constraint ck_teleofe check(tele in ('S', 'N')),
-  9  	     constraint fk_09 foreign key(contacto) references CONTACTOS(contacto),
- 10  	     constraint fk_12 foreign key(empresa) references EMPRESAS(idEmp),
- 11  	     constraint pk_ofertas primary key(idOfe)
- 12  );
+  3  	     nomOfe varchar2(60),
+  4  	     fofe date,
+  5  	     kas number(8,2),
+  6  	     tele char(1),
+  7  	     contacto number,
+  8  	     empresa number,
+  9  	     constraint ck_teleofe check(tele in ('S', 'N')),
+ 10  	     constraint fk_09 foreign key(contacto) references CONTACTOS(contacto),
+ 11  	     constraint fk_12 foreign key(empresa) references EMPRESAS(idEmp),
+ 12  	     constraint pk_ofertas primary key(idOfe)
+ 13  );
 
 Tabla creada.
 
@@ -228,8 +233,10 @@ SQL> --pero los de las restricciones no porque tienen el ámbito del esquema
 SQL> create table TOOLS(
   2  	     idtoo number,
   3  	     nomtoo varchar2(50),
-  4  	     constraint pk_tools primary key(idtoo)
-  5  );
+  4  	     lenguaje varchar2(20)
+  5  	     constraint ck_tools check(lenguaje in ('S', 'N')),
+  6  	     constraint pk_tools primary key(idtoo)
+  7  );
 
 Tabla creada.
 
@@ -262,5 +269,42 @@ SQL> create table COMPETENCIAS(
 
 Tabla creada.
 
-SQL> 
+SQL> create table FUNCIONES(
+  2  	     idFun number,
+  3  	     nomFun varchar2(80),
+  4  	     perfil number,
+  5  	     constraint fk_16 foreign key(perfil) references PERFILES(idPer),
+  6  	     constraint pk_funciones primary key(idFun)
+  7  );
+
+Tabla creada.
+
+SQL> create table BIBLIOTECAS(
+  2  	     oferta number,
+  3  	     funcion number,
+  4  	     constraint fk_17_A foreign key(oferta) references OFERTAS(idofe),
+  5  	     constraint fk_17_B foreign key(funcion) references FUNCIONES(idFun),
+  6  	     constraint pk_bibliotecas primary key(oferta,funcion)
+  7  );
+
+Tabla creada.
+
+SQL> create table REQUISITOS(
+  2  	     idReq number,
+  3  	     nomReq varchar2(50),
+  4  	     constraint pk_requisitos primary key(idReq)
+  5  );
+
+Tabla creada.
+
+SQL> create table ESPECIFICACIONES(
+  2  	     oferta number,
+  3  	     requisito number,
+  4  	     constraint fk_18_A foreign key(oferta) references OFERTAS(idofe),
+  5  	     constraint fk_18_B foreign key(requisito) references REQUISITOS(idReq),
+  6  	     constraint pk_especificaciones primary key(oferta,requisito)
+  7  );
+
+Tabla creada.
+
 SQL> spo off
