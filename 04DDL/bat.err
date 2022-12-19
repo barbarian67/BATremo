@@ -25,7 +25,7 @@ Conectado.
 SQL> --creación de tablas
 SQL> create table FORMAS(
   2  	     idFor number,
-  3  	     desFor varchar(15),
+  3  	     desForm varchar(10),
   4  	     constraint pk_formas primary key(idFor)
   5  );
 
@@ -57,7 +57,7 @@ SQL> create table CICLOS(
 Tabla creada.
 
 SQL> create table DISTRITOS(
-  2  	     cp varchar2(15),
+  2  	     cp number,
   3  	     distri varchar2(70),
   4  	     constraint pk_municipios primary key(cp)
   5  );
@@ -74,7 +74,7 @@ SQL> create table ALUMNOS(
   8  	     fnac date,
   9  	     sex char(1),
  10  	     dis number(3) default 0,
- 11  	     cpAlu varchar2(15),
+ 11  	     cpAlu number,
  12  	     constraint fk_cpalumnos foreign key(cpAlu) references DISTRITOS(cp),
  13  	     constraint ck_sex check(sex in ('M', 'H')),
  14  	     constraint pk_alumnos primary key(idAlu)
@@ -101,23 +101,20 @@ SQL> create table EMPRESAS(
   6  	     forma number,
   7  	     ramo number,
   8  	     tam number,
-  9  	     web varchar2(50),
- 10  	     constraint fk_forma foreign key(forma) references FORMAS(idFor),
- 11  	     constraint fk_ramo foreign key(ramo) references RAMOS(idRam),
- 12  	     constraint fk_tam foreign key(tam) references TAMANOS(idTam),
- 13  	     constraint pk_empresas primary key(idEmp)
- 14  );
+  9  	     constraint fk_forma foreign key(forma) references FORMAS(idFor),
+ 10  	     constraint fk_ramo foreign key(ramo) references RAMOS(idRam),
+ 11  	     constraint fk_tam foreign key(tam) references TAMANOS(idTam),
+ 12  	     constraint pk_empresas primary key(idEmp)
+ 13  );
 
 Tabla creada.
 
 SQL> create table SEDES(
   2  	     idsed number,
-  3  	     cpsed varchar2(15),
-  4  	     empresa number,
-  5  	     constraint fk_13 foreign key(empresa) references EMPRESAS(idEmP),
-  6  	     constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
-  7  	     constraint pk_sedes primary key(idsed)
-  8  );
+  3  	     cpsed number,
+  4  	     constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
+  5  	     constraint pk_sedes primary key(idsed)
+  6  );
 
 Tabla creada.
 
@@ -146,12 +143,10 @@ Tabla creada.
 SQL> create table CONTACTOS(
   2  	     contacto number,
   3  	     mailcon varchar2(50),
-  4  	     movcon  varchar2(15),
-  5  	     empresa number,
-  6  	     constraint fk_03 foreign key(empresa) references EMPRESAS(idEmp),
-  7  	     constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
-  8  	     constraint pk_contactos primary key(contacto)
-  9  );
+  4  	     movcon  varchar2(9),
+  5  	     constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
+  6  	     constraint pk_contactos primary key(contacto)
+  7  );
 
 Tabla creada.
 
@@ -200,17 +195,18 @@ SQL> create table PRACTICAS(
   7  	     ciclo number,
   8  	     docente number,
   9  	     laboral number,
- 10  	     alumno number,
- 11  	     constraint ck_tele check(tele in ('S', 'N')),
- 12  	     constraint ck_erasmus check(eplus in ('S', 'N')),
- 13  	     constraint fk_15 foreign key(alumno) references ALUMNOS(idAlu),
- 14  	     constraint fk_07 foreign key(docente) references PROFESORES(profesor),
- 15  	     constraint fk_14 foreign key(laboral) references CONTACTOS(contacto),
- 16  	     constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
- 17  	     constraint pk_practicas primary key(idPra)
- 18  );
+ 10  	     constraint ck_tele check(tele in ('S', 'N')),
+ 11  	     constraint ck_erasmus check(eplus in ('S', 'N')),
+ 12  	     constraint fk_07 foreign key(docente) references PROFESORES(profesor),
+ 13  	     constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),
+ 14  	     constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
+ 15  	     constraint pk_practicas primary key(idPra)
+ 16  );
+	constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),
+	                                                           *
+ERROR en línea 13:
+ORA-00904: "IDCON": identificador no válido 
 
-Tabla creada.
 
 SQL> create table OFERTAS(
   2  	     idOfe number,

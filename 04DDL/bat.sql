@@ -17,7 +17,7 @@ conn BAT/bat@delfos
 --creación de tablas
 create table FORMAS(
 	idFor number,
-	desFor varchar(15),
+	desForm varchar(10),
 	constraint pk_formas primary key(idFor)
 );
 create table RAMOS(
@@ -37,7 +37,7 @@ create table CICLOS(
 	constraint pk_ciclos primary key(idCic)
 );
 create table DISTRITOS(
-	cp varchar2(15),
+	cp number,
 	distri varchar2(70),
 	constraint pk_municipios primary key(cp)
 );
@@ -51,7 +51,7 @@ create table ALUMNOS(
 	fnac date,
 	sex char(1),
 	dis number(3) default 0,
-	cpAlu varchar2(15),
+	cpAlu number,
 	constraint fk_cpalumnos foreign key(cpAlu) references DISTRITOS(cp),
 	constraint ck_sex check(sex in ('M', 'H')),	
 	constraint pk_alumnos primary key(idAlu)
@@ -72,7 +72,6 @@ create table EMPRESAS(
 	forma number,
 	ramo number,
 	tam number,
-	web varchar2(50),
 	constraint fk_forma foreign key(forma) references FORMAS(idFor),
 	constraint fk_ramo foreign key(ramo) references RAMOS(idRam),
 	constraint fk_tam foreign key(tam) references TAMANOS(idTam),
@@ -80,9 +79,7 @@ create table EMPRESAS(
 );
 create table SEDES(
 	idsed number,
-	cpsed varchar2(15),
-	empresa number,
-	constraint fk_13 foreign key(empresa) references EMPRESAS(idEmP),
+	cpsed number,
 	constraint fk_cpsedes foreign key(cpsed) references DISTRITOS(cp),
 	constraint pk_sedes primary key(idsed)
 );
@@ -105,9 +102,7 @@ create table EMPLEADOS(
 create table CONTACTOS(
 	contacto number,
 	mailcon varchar2(50),
-	movcon	varchar2(15),
-	empresa	number,
-	constraint fk_03 foreign key(empresa) references EMPRESAS(idEmp),
+	movcon	varchar2(9),
 	constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
 	constraint pk_contactos primary key(contacto)	
 );
@@ -144,12 +139,10 @@ create table PRACTICAS(
 	ciclo number,
 	docente number,
 	laboral number,
-	alumno number,
 	constraint ck_tele check(tele in ('S', 'N')),	
 	constraint ck_erasmus check(eplus in ('S', 'N')),
-	constraint fk_15 foreign key(alumno) references ALUMNOS(idAlu),	
 	constraint fk_07 foreign key(docente) references PROFESORES(profesor),	
-	constraint fk_14 foreign key(laboral) references CONTACTOS(contacto),	
+	constraint fk_14 foreign key(laboral) references CONTACTOS(idCon),	
 	constraint fk_04 foreign key(ciclo) references CICLOS(idcic),
 	constraint pk_practicas primary key(idPra)		
 );
@@ -170,6 +163,8 @@ create table OFERTAS(
 create table TOOLS(
 	idtoo number,
 	nomtoo varchar2(50),
+	lenguaje varchar2(20)
+	constraint ck_tools check(lenguaje in ('S', 'N')),
 	constraint pk_tools primary key(idtoo)
 );
 create table PERFILES(
@@ -192,5 +187,30 @@ create table COMPETENCIAS(
 	constraint fk_11_B foreign key(perfil) references PERFILES(idper),
 	constraint pk_competencias primary key(oferta,perfil)		
 );
-
+create table FUNCIONES(
+	idFun number,
+	nomFun varchar2(80)
+	perfil number,
+	constraint fk_16 foreign key(perfil) references PERFILES(idPer),
+	constraint pk_funciones primary key(idFun)		
+);
+create table BIBLIOTECAS(
+	oferta number,
+	funcion number,
+	constraint fk_17_A foreign key(oferta) references OFERTAS(idofe),
+	constraint fk_17_B foreign key(funcion) references FUNCIONES(idFun),
+	constraint pk_bibliotecas primary key(oferta,funcion)	
+);
+create table REQUISITOS(
+	idReq number,
+	nomReq varchar2(50)
+	constraint pk_requisitos primary key(idReq)
+);
+create table ESPECIFICACIONES(
+	oferta number,
+	requisito number,
+	constraint fk_18_A foreign key(oferta) references OFERTAS(idofe),
+	constraint fk_18_B foreign key(requisito) references REQUISITOS(idReq),
+	constraint pk_especificaciones primary key(oferta,requisito)	
+);
 spo off
