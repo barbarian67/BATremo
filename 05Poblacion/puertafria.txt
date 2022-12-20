@@ -1,5 +1,5 @@
 Buenos días:
 Soy responsable de la Formación en Centros de Trabajo del ciclo superior de Administración de Sistemas Informáticos en Red (ASIR) del IES Fernando Aguilar Quignon. 
-Me pongo en contacto con ustedes para contemplar la posibilidad de integrar a mis alumnos en su empresa para realizar sus prácticas de forma remota en su empresa.
-Mis alumnos y alumnas dominan sistemas Linux usando contenedores Docker y LXC, programación bash y Python, SGBD MySQL, Postgres y sobre todo Oracle. 
+Me pongo en contacto con ustedes para contemplar la posibilidad de integrar a mis alumnos en su empresa para realizar prácticas de forma remota.
+Mis alumnos y alumnas dominan sistemas Linux usando contenedores Docker y LXC, programación Bash y Python, SGBD MySQL, Postgres y sobre todo Oracle. 
 Un saludo
