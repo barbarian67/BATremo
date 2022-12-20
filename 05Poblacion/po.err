@@ -1,0 +1,887 @@
+SQL> alter session set NLS_DATE_FORMAT='DD-MM-YY';
+
+Session altered.
+
+SQL> select current_timestamp from DUAL;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+20-DEC-22 11.26.20.012857 AM +01:00                                             
+
+SQL> -----FORMAS-------------------
+SQL> insert into FORMAS(idfor, desfor) values (1,'S.L.');
+
+1 row created.
+
+SQL> insert into FORMAS(idfor, desfor) values (2,'S.L.U.');
+
+1 row created.
+
+SQL> insert into FORMAS(idfor, desfor) values (3,'S.L.L.');
+
+1 row created.
+
+SQL> insert into FORMAS(idfor, desfor) values (4,'Autónomo');
+
+1 row created.
+
+SQL> insert into FORMAS(idfor, desfor) values (5,'C.B.');
+
+1 row created.
+
+SQL> insert into FORMAS(idfor, desfor) values (6,'S.A.');
+
+1 row created.
+
+SQL> insert into FORMAS(idfor, desfor) values (7,'S.A.U.');
+
+1 row created.
+
+SQL> insert into FORMAS(idfor, desfor) values (8,'Institución');
+
+1 row created.
+
+SQL> insert into FORMAS(idfor, desfor) values (9,'Ltd.');
+
+1 row created.
+
+SQL> 
+SQL> ----RAMOS-----------------------
+SQL> insert into RAMOS(idram, desram) values (1,'Construcción');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (2,'Sanitario');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (3,'Hosteleria');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (4,'Informática');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (5,'Consultoría informática');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (6,'Desarrollo');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (7,'Formación');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (8,'Distribución de productos eléctricos');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (9,'Ingeniería');
+
+1 row created.
+
+SQL> insert into RAMOS(idram, desram) values (10,'Proveedor Cloud e integración de aplicaciones');
+
+1 row created.
+
+SQL> ----TAMAÑOS---------------------------------------------
+SQL> insert into TAMANOS(idtam,destam) values(1,'Microempresa');
+
+1 row created.
+
+SQL> insert into TAMANOS(idtam,destam) values(2,'Pequeña');
+
+1 row created.
+
+SQL> insert into TAMANOS(idtam,destam) values(3,'Mediana');
+
+1 row created.
+
+SQL> insert into TAMANOS(idtam,destam) values(4,'Grande');
+
+1 row created.
+
+SQL> ----CICLOS---------------------------------------------
+SQL> insert into CICLOS(idcic,abre) values(1,'ASIR');
+
+1 row created.
+
+SQL> insert into CICLOS(idcic,abre) values(2,'DAM');
+
+1 row created.
+
+SQL> insert into CICLOS(idcic,abre) values(3,'DAW');
+
+1 row created.
+
+SQL> insert into CICLOS(idcic,abre) values(4,'SMR');
+
+1 row created.
+
+SQL> ---DISTRITOS---------------------------------------------
+SQL> insert into DISTRITOS(cp,distri) values('11011','Cádiz, Cortadura');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11100','Cádiz, San Fernando');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11500','Cádiz, El Puerto de Sta. María');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11140','Cádiz, Conil de la Fra.');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11002','Cádiz, La Viña-Caleta');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('29130','Málaga, Alhaurín de la Torre');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11007','Cádiz, Bahía Blanca');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11179','Cádiz, Medina-Sidonia');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11408','Cádiz, Jerez de la Fra. Sur');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11540','Cádiz, Sanlúcar de Barrameda');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11650','Cádiz, Villamartín');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('21440','Huelva, Lepe');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('30011','Murcia');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('46005','Valencia');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('D02','Dublín 2');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11005','Cádiz Catedraĺ');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('D11','Dublín 11');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('15510','Cádiz Puerto Real');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('41018','Sevilla San Francisco Javier');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('11407','Cádiz, Jerez de la Fra. Parque empresarial');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('41092','Sevilla, Cartuja');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('29004','Málaga, Galia');
+
+1 row created.
+
+SQL> insert into DISTRITOS(cp,distri) values('28919','Madrid, Leganés. LEGATEC');
+
+1 row created.
+
+SQL> ---ALUMNOS---------------------------------------------
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (1,'Montesino Fernando, Carlos',null,null,null,null,'13-11-02','H',0,'11100');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (2,'Peralta Guerrero, Pedro',null,null,null,null,'15-12-03','H',0,'11179');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (3,'Riol Sánchez, José María',null,null,null,null,'14-10-93','H',0,'11007');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (4,'Rodríguez Guerrero, José Manuel',null,null,null,null,'04-05-03','H',0,'11100');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (5,'Sánchez Ureba, Juan María',null,null,null,null,'24-05-01','H',0,'11140');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (6,'Cosme Mateo, Sergio',null,null,null,null,'23-02-01','H',0,'11100');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (7,'Silva Bravo, Israel',null,null,null,null,null,'H',0,'11002');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (8,'García-Rincón Arauz, Luis Miguel',null,null,null,null,'17-05-93','H',0,'29130');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (9,'Rodríguez Medina, Abraham',null,null,null,null,null,'H',0,'11408');
+
+1 row created.
+
+SQL> insert into ALUMNOS(idalu,nomalu,movil,mail,curri,proy,fnac,sex,dis,cpalu)
+  2  values (10,'Guerrero Luna, Miguel',null,null,null,null,null,'H',0,'11100');
+
+1 row created.
+
+SQL> ---TRAYECTOS---------------------------------------------
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,1,null);
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,2,null);
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,3,null);
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,4,null);
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (4,4,'23-06-21');
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,5,null);
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,6,null);
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,7,null);
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (4,7,'20-06-18');
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,8,null);
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,9,'22-06-22');
+
+1 row created.
+
+SQL> insert into TRAYECTOS(ciclo,alumno,fpromo) values (1,10,'22-06-22');
+
+1 row created.
+
+SQL> 
+SQL> ---EMPRESAS-y--SEDES-------------------------------------------
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(1, 'Pascual y Pascual','José Manuel Pascual Pascual',250,6,2,4,'https://www.josemanuelpascualpascual.es');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(1,'11002',1);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(2,'11500',1);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(3,'11540',1);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(4,'11650',1);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(5,'21440',1);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(2, 'Zaporito','Junta de Andalucia',250,8,7,4,'https://www.cifpmaritimozaporito.com/');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(6,'11100',2);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(3, 'Inforges','Inforges IT Services',210,1,4,3,'https://inforges.es/');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(7,'11100',3);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(8,'30011',3);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(9,'46005',3);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(4, '4Property','4Property Consult',150,9,1,2,'https://www.4property.com');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(10,'D02',4);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(5, 'RAID1','Carlos David Benítez Marroquín',4,9,5,1,'https://raid1.es/');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(11,'11005',5);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(6, 'NetSpeed','NetSpeed',50,9,5,2,'https://www.netspeed.ie/');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(12,'D11',6);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(7, 'Elecam','Elecam',300,6,8,3, 'https://www.elecam.com');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(13,'11011',7);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(8, 'Eritea','Eritea Sistemas',5,2,5,1,'https://eritea.es/');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(14,'15510',8);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(9, 'Ghenova digital','Ghenova Ingeniería',200,1,9,2,'https://ghenovadigital.com');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(15,'41018',9);
+
+1 row created.
+
+SQL> 
+SQL> insert into EMPRESAS(idEmp,nomEmp,razon,numTra,forma,ramo,tam,web)
+  2  values(10, 'Dantia','Dantia Tecnología',200,1,10,3,'https://www.dantia.es/');
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(16,'11407',10);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(17,'41092',10);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(18,'29004',10);
+
+1 row created.
+
+SQL> insert into SEDES(idsed,cpsed,empresa)values(19,'28919',10);
+
+1 row created.
+
+SQL> 
+SQL> --CONTRATOS-------------------------------------------------------
+SQL> insert into CONTRATOS(empresa,alumno,inicon,fincon,pra)
+  2  values(1,10,'25-06-22',null, 'N');
+
+1 row created.
+
+SQL> insert into CONTRATOS(empresa,alumno,inicon,fincon,pra)
+  2  values(6,9,'20-09-22',null, 'N');
+
+1 row created.
+
+SQL> insert into CONTRATOS(empresa,alumno,inicon,fincon,pra)
+  2  values(7,7,'15-07-22',null, 'N');
+
+1 row created.
+
+SQL> --EMPLEADOS-------------------------------------------------------
+SQL> insert into EMPLEADOS(idem,nomEm) values(1,'Jaime');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(2,'María');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(3,'Ana');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(4,'Miguel');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(5,'Ricardo');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(6,'Jesús Cazorla');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(7,'Gema Silva');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(8,'John Kennedy');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(9,'Carlos David Benítez Marroquín');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(10,'Paul McLoughlin');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(11,'Juan Manuel Nogueira');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(12,'María Hierro');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(13,'Dantia info');
+
+1 row created.
+
+SQL> insert into EMPLEADOS(idem,nomEm) values(14,'Paloma Abucha');
+
+1 row created.
+
+SQL> --CONTACTOS-y-PROFESORES-----------------------------------------------------
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(6,'cazorlab@gmail.com',null,2);
+
+1 row created.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(7,'info@infor-ges.com','671672244',3);
+
+1 row created.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(8,'info@4property.com','35314977705',4);
+
+1 row created.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(9,'info@raid1.es','956222555',5);
+
+1 row created.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(10,'info@netspeed.ie',null,6);
+
+1 row created.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(11,'info@eritea.es','856211442',8);
+
+1 row created.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(12,'info@ghenova.com','954990200',9);
+
+1 row created.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(13,null,'956182122',10);
+
+1 row created.
+
+SQL> insert into CONTACTOS(contacto,mailcon,movcon,empresa) values(14,'pabucha@dantia.es','956182122',10);
+
+1 row created.
+
+SQL> insert into PROFESORES(profesor) values(1);
+
+1 row created.
+
+SQL> insert into PROFESORES(profesor) values(2);
+
+1 row created.
+
+SQL> insert into PROFESORES(profesor) values(3);
+
+1 row created.
+
+SQL> insert into PROFESORES(profesor) values(4);
+
+1 row created.
+
+SQL> insert into PROFESORES(profesor) values(5);
+
+1 row created.
+
+SQL> --PRACTICAS
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
+  2  values(1,'21-03-22','06-06-22','N','N',1,1,6,7);
+
+1 row created.
+
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
+  2  values(2,'21-02-21','18-06-22','N','N',4,2,7,4);
+
+1 row created.
+
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
+  2  values(4,'21-03-22','18-06-22','N','S',1,1,8,10);
+
+1 row created.
+
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
+  2  values(5,'15-09-22','15-12-22','N','N',1,1,9,6);
+
+1 row created.
+
+SQL> insert into PRACTICAS(idPra,fini,ffin,tele,eplus,ciclo,docente,laboral,alumno)
+  2  values(6,'21-03-22','20-06-22','N','S',1,1,10,9);
+
+1 row created.
+
+SQL> --OFERTAS
+SQL> insert into OFERTAS(idOfe,nomOfe,fofe,kas,tele,contacto,empresa)
+  2  values(1,'Administrador de sistemas y bases de datos','16-12-22',null,'S',12,null);
+
+1 row created.
+
+SQL> --PERFILES
+SQL> insert into PERFILES(idPer,nomPer)
+  2  values(1, 'SysAdmin');
+
+1 row created.
+
+SQL> insert into PERFILES(idPer,nomPer)
+  2  values(2, 'DBA');
+
+1 row created.
+
+SQL> --REQUISITOS
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(1,'Grado en ingenieria Informática');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(2,'ASIR');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(3,'Inglés B2');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(4,'Inglés C1');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(5, 'Experiencia 1 año');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(6, 'Experiencia 2 años');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(7, 'Experiencia 3 años');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(8, 'Experiencia 4 años');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(9, 'Carné de conducir');
+
+1 row created.
+
+SQL> insert into REQUISITOS(idReq,nomReq)
+  2  values(10, 'Movilidad Geográfica');
+
+1 row created.
+
+SQL> --FUNCIONES
+SQL> insert into FUNCIONES(idFun,nomFun,perfil)
+  2  values(1,'Mantenimiento, monitorización y administración de procesos y servicios',1);
+
+1 row created.
+
+SQL> insert into FUNCIONES(idFun,nomFun,perfil)
+  2  values(2,'Carga masiva de datos externos',2);
+
+1 row created.
+
+SQL> insert into FUNCIONES(idFun,nomFun,perfil)
+  2  values(3,'Respaldo y Recuperación de bases de datos',2);
+
+1 row created.
+
+SQL> insert into FUNCIONES(idFun,nomFun,perfil)
+  2  values(4,'Replicación de Bases de datos', 2);
+
+1 row created.
+
+SQL> insert into FUNCIONES(idFun,nomFun,perfil)
+  2  values(5,'Administración de usuarios de bases de datos', 2);
+
+1 row created.
+
+SQL> insert into FUNCIONES(idFun,nomFun,perfil)
+  2  values(6,'Análisis de rendimiento de bases de datos',2);
+
+1 row created.
+
+SQL> --TOOLS
+SQL> insert into TOOLS(idToo,nomToo,lenguaje)
+  2  values(1,'Sistemas Linux','N');
+
+1 row created.
+
+SQL> insert into TOOLS(idToo,nomToo,lenguaje)
+  2  values(2,'MySQL','N');
+
+1 row created.
+
+SQL> insert into TOOLS(idToo,nomToo,lenguaje)
+  2  values(3,'Bash','S');
+
+1 row created.
+
+SQL> insert into TOOLS(idToo,nomToo,lenguaje)
+  2  values(4,'Python','S');
+
+1 row created.
+
+SQL> insert into TOOLS(idToo,nomToo,lenguaje)
+  2  values(5,'Java','S');
+
+1 row created.
+
+SQL> insert into TOOLS(idToo,nomToo,lenguaje)
+  2  values(6,'Docker','N');
+
+1 row created.
+
+SQL> --TOOLBOXES
+SQL> insert into TOOLBOXES(oferta,tool)
+  2  values(1,1);
+
+1 row created.
+
+SQL> insert into TOOLBOXES(oferta,tool)
+  2  values(1,2);
+
+1 row created.
+
+SQL> insert into TOOLBOXES(oferta,tool)
+  2  values(1,3);
+
+1 row created.
+
+SQL> insert into TOOLBOXES(oferta,tool)
+  2  values(1,4);
+
+1 row created.
+
+SQL> insert into TOOLBOXES(oferta,tool)
+  2  values(1,5);
+
+1 row created.
+
+SQL> insert into TOOLBOXES(oferta,tool)
+  2  values(1,6);
+
+1 row created.
+
+SQL> --COMPETENCIAS
+SQL> insert into COMPETENCIAS(oferta,perfil)
+  2  values(1,1);
+
+1 row created.
+
+SQL> insert into COMPETENCIAS(oferta,perfil)
+  2  values(1,2);
+
+1 row created.
+
+SQL> --BIBLIOTECAS
+SQL> insert into BIBLIOTECAS(oferta,funcion)
+  2  values(1,1);
+
+1 row created.
+
+SQL> insert into BIBLIOTECAS(oferta,funcion)
+  2  values(1,2);
+
+1 row created.
+
+SQL> insert into BIBLIOTECAS(oferta,funcion)
+  2  values(1,3);
+
+1 row created.
+
+SQL> insert into BIBLIOTECAS(oferta,funcion)
+  2  values(1,4);
+
+1 row created.
+
+SQL> insert into BIBLIOTECAS(oferta,funcion)
+  2  values(1,5);
+
+1 row created.
+
+SQL> insert into BIBLIOTECAS(oferta,funcion)
+  2  values(1,6);
+
+1 row created.
+
+SQL> --ESPECIFICACIONES
+SQL> insert into ESPECIFICACIONES(oferta,requisito)
+  2  values(1,2);
+
+1 row created.
+
+SQL> insert into ESPECIFICACIONES(oferta,requisito)
+  2  values(1,3);
+
+1 row created.
+
+SQL> insert into ESPECIFICACIONES(oferta,requisito)
+  2  values(1,6);
+
+1 row created.
+
+SQL> --MEDIOS
+SQL> insert into MEDIOS(idMed,nomMed)
+  2  values(1, 'Mail');
+
+1 row created.
+
+SQL> insert into MEDIOS(idMed,nomMed)
+  2  values(2, 'Teléfono');
+
+1 row created.
+
+SQL> insert into MEDIOS(idMed,nomMed)
+  2  values(3, 'Mensaje de texto');
+
+1 row created.
+
+SQL> insert into MEDIOS(idMed,nomMed)
+  2  values(4, 'Videoconferencia');
+
+1 row created.
+
+SQL> insert into MEDIOS(idMed,nomMed)
+  2  values(5, 'Formulario');
+
+1 row created.
+
+SQL> --MENSAJES
+SQL> insert into MENSAJES(idMen,fmen,emisor,receptor,medio,responde_a,contenido)
+  2  values(1,'20-12-22',1,12,1,null,'Buenos días:
+  3  Soy responsable de la Formación en Centros de Trabajo del ciclo superior de Administración de Sistemas Informáticos en Red (ASIR) del IES Fernando Aguilar Quignon de Cádiz.
+  4  Me pongo en contacto con ustedes para contemplar la posibilidad de integrar a mis alumnos en su empresa para realizar prácticas de forma remota durante el período entre Semana Santa y verano.
+  5  Mis alumnas y alumnos dominan sistemas Linux usando contenedores Docker y LXC, despliegue y admon. de servicios, programación Bash y Python, SGBD MySQL, Postgres y sobre todo Oracle.
+  6  Un saludo');
+
+1 row created.
+
+SQL> insert into MENSAJES(idMen,fmen,emisor,receptor,medio,responde_a,contenido)
+  2  values(2,'18-03-22',1,13,5,null,'Pertenezco al IES Fernando Aguilar. Quiero explorar la posibilidad de que alumnos de ciclos de mi instituto (Administración de sistemas, Desarrollo o Técnicos) puedan colaborar con ustedes en prácticas de Empresa. Un saludo');
+
+1 row created.
+
+SQL> insert into MENSAJES(idMen,fmen,emisor,receptor,medio,responde_a,contenido)
+  2  values(3,'22-03-22',14,1,1,2,'Buenos días Jaime,
+  3  Actualmente no estamos interesados en este tema, quizás el año que viene.
+  4  Un saludo.');
+
+1 row created.
+
+SQL> insert into MENSAJES(idMen,fmen,emisor,receptor,medio,responde_a,contenido)
+  2  values(4,'20-12-22',1,14,1,3,'Buenos días, Paloma:
+  3  Me pongo en contacto contigo de nuevo como responsable de la Formación en Centros de Trabajo del ciclo superior de Administración de Sistemas Informáticos en Red (ASIR) del IES Fernando Aguilar Quignon de Cádiz.
+  4  Busco empresas donde mis alumnas y alumnos puedan realizar prácticas durante el período entre Semana Santa y verano. Podrían hacerse en formato remoto.
+  5  Su perfil abarca conocimientos en cloud de infraestructura tanto AWS como Openstack y despliegue de aplicaciones web y servicios. También tienen experiencia en seguridad y sistemas.
+  6  Un saludo y Gracias');
+
+1 row created.
+
+SQL> spo off

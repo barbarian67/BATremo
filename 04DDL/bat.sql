@@ -5,6 +5,7 @@ alter session set NLS_DATE_FORMAT='DD-MM-YY';
 spo bat.err
 --creo el esquema con los privilegios mínimos que necesita
 --establecer el tablespace por defecto es sólo para ejecución en versiones <11g
+select current_timestamp from DUAL;
 drop user BAT cascade;
 create user BAT identified by bat
 	default tablespace USERS
@@ -13,7 +14,7 @@ grant create session, create table, create procedure to BAT;
 grant create public synonym, create sequence, create view to BAT;
 
 --conecto con la cuenta que va a albergar el esquema
-conn BAT/bat@delfos
+conn BAT/bat@fa
 --creación de tablas
 create table FORMAS(
 	idFor number,
@@ -123,6 +124,7 @@ create table MEDIOS(
 );
 create table MENSAJES(
 	idMen number,
+	fmen date,
 	emisor number,
 	receptor number,
 	contenido varchar2(1000),

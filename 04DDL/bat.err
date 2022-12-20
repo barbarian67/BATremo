@@ -1,27 +1,33 @@
 SQL> --creo el esquema con los privilegios mínimos que necesita
 SQL> --establecer el tablespace por defecto es sólo para ejecución en versiones <11g
+SQL> select sysdate from DUAL;
+
+SYSDATE                                                                         
+--------                                                                        
+20-12-22                                                                        
+
 SQL> drop user BAT cascade;
 
-Usuario borrado.
+User dropped.
 
 SQL> create user BAT identified by bat
   2  	     default tablespace USERS
   3  	     quota 100M on USERS;
 
-Usuario creado.
+User created.
 
 SQL> grant create session, create table, create procedure to BAT;
 
-Concesión terminada correctamente.
+Grant succeeded.
 
 SQL> grant create public synonym, create sequence, create view to BAT;
 
-Concesión terminada correctamente.
+Grant succeeded.
 
 SQL> 
 SQL> --conecto con la cuenta que va a albergar el esquema
-SQL> conn BAT/bat@delfos
-Conectado.
+SQL> conn BAT/bat@fa
+Connected.
 SQL> --creación de tablas
 SQL> create table FORMAS(
   2  	     idFor number,
@@ -29,7 +35,7 @@ SQL> create table FORMAS(
   4  	     constraint pk_formas primary key(idFor)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> create table RAMOS(
   2  	     idRam number,
@@ -37,7 +43,7 @@ SQL> create table RAMOS(
   4  	     constraint pk_ramos primary key(idRam)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> create table TAMANOS(
   2  	     idTam number,
@@ -45,7 +51,7 @@ SQL> create table TAMANOS(
   4  	     constraint pk_tamanos primary key(idTam)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> create table CICLOS(
   2  	     idCic number,
@@ -54,7 +60,7 @@ SQL> create table CICLOS(
   5  	     constraint pk_ciclos primary key(idCic)
   6  );
 
-Tabla creada.
+Table created.
 
 SQL> create table DISTRITOS(
   2  	     cp varchar2(15),
@@ -62,7 +68,7 @@ SQL> create table DISTRITOS(
   4  	     constraint pk_municipios primary key(cp)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> create table ALUMNOS(
   2  	     idAlu number,
@@ -80,7 +86,7 @@ SQL> create table ALUMNOS(
  14  	     constraint pk_alumnos primary key(idAlu)
  15  );
 
-Tabla creada.
+Table created.
 
 SQL> create table TRAYECTOS(
   2  	     ciclo number,
@@ -91,7 +97,7 @@ SQL> create table TRAYECTOS(
   7  	     constraint pk_trayectos primary key(ciclo,alumno)
   8  );
 
-Tabla creada.
+Table created.
 
 SQL> create table EMPRESAS(
   2  	     idEmp number,
@@ -108,7 +114,7 @@ SQL> create table EMPRESAS(
  13  	     constraint pk_empresas primary key(idEmp)
  14  );
 
-Tabla creada.
+Table created.
 
 SQL> create table SEDES(
   2  	     idsed number,
@@ -119,7 +125,7 @@ SQL> create table SEDES(
   7  	     constraint pk_sedes primary key(idsed)
   8  );
 
-Tabla creada.
+Table created.
 
 SQL> create table CONTRATOS(
   2  	     empresa number,
@@ -133,7 +139,7 @@ SQL> create table CONTRATOS(
  10  	     constraint pk_contratos primary key(empresa,alumno)
  11  );
 
-Tabla creada.
+Table created.
 
 SQL> create table EMPLEADOS(
   2  	     idem number,
@@ -141,7 +147,7 @@ SQL> create table EMPLEADOS(
   4  	     constraint pk_empleados primary key(idem)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> create table CONTACTOS(
   2  	     contacto number,
@@ -153,7 +159,7 @@ SQL> create table CONTACTOS(
   8  	     constraint pk_contactos primary key(contacto)
   9  );
 
-Tabla creada.
+Table created.
 
 SQL> create table PROFESORES(
   2  	     profesor number,
@@ -161,7 +167,7 @@ SQL> create table PROFESORES(
   4  	     constraint pk_profesores primary key(profesor)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> create table MEDIOS(
   2  	     idMed number,
@@ -169,26 +175,27 @@ SQL> create table MEDIOS(
   4  	     constraint pk_medios primary key(idMed)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> create table MENSAJES(
   2  	     idMen number,
-  3  	     emisor number,
-  4  	     receptor number,
-  5  	     contenido varchar2(1000),
-  6  	     medio number,
-  7  	     responde_a number,
-  8  	     constraint fk_05 foreign key(emisor) references EMPLEADOS(idEm),
-  9  	     constraint fk_06 foreign key(receptor) references EMPLEADOS(idEm),
- 10  	     constraint fk_medios foreign key(medio) references MEDIOS(idmed),
- 11  	     constraint pk_mensajes primary key(idMen)
- 12  );
+  3  	     fmen date,
+  4  	     emisor number,
+  5  	     receptor number,
+  6  	     contenido varchar2(1000),
+  7  	     medio number,
+  8  	     responde_a number,
+  9  	     constraint fk_05 foreign key(emisor) references EMPLEADOS(idEm),
+ 10  	     constraint fk_06 foreign key(receptor) references EMPLEADOS(idEm),
+ 11  	     constraint fk_medios foreign key(medio) references MEDIOS(idmed),
+ 12  	     constraint pk_mensajes primary key(idMen)
+ 13  );
 
-Tabla creada.
+Table created.
 
 SQL> alter table MENSAJES add constraint fk_08 foreign key(responde_a) references MENSAJES(idMen);
 
-Tabla modificada.
+Table altered.
 
 SQL> --Oracle se lo come sin necesidad de hacer el alter pero otros SGBD no
 SQL> create table PRACTICAS(
@@ -210,7 +217,7 @@ SQL> create table PRACTICAS(
  17  	     constraint pk_practicas primary key(idPra)
  18  );
 
-Tabla creada.
+Table created.
 
 SQL> create table OFERTAS(
   2  	     idOfe number,
@@ -226,7 +233,7 @@ SQL> create table OFERTAS(
  12  	     constraint pk_ofertas primary key(idOfe)
  13  );
 
-Tabla creada.
+Table created.
 
 SQL> --los nombres de las columnas se pueden repetir (tele) porque tiene el namespace de su tabla,
 SQL> --pero los de las restricciones no porque tienen el ámbito del esquema
@@ -238,7 +245,7 @@ SQL> create table TOOLS(
   6  	     constraint pk_tools primary key(idtoo)
   7  );
 
-Tabla creada.
+Table created.
 
 SQL> create table PERFILES(
   2  	     idper number,
@@ -246,7 +253,7 @@ SQL> create table PERFILES(
   4  	     constraint pk_perfiles primary key(idper)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> --kas son euros, Oracle no tiene un tipo currency, otros SGBDs sí
 SQL> create table TOOLBOXES(
@@ -257,7 +264,7 @@ SQL> create table TOOLBOXES(
   6  	     constraint pk_toolboxes primary key(oferta,tool)
   7  );
 
-Tabla creada.
+Table created.
 
 SQL> create table COMPETENCIAS(
   2  	     oferta number,
@@ -267,7 +274,7 @@ SQL> create table COMPETENCIAS(
   6  	     constraint pk_competencias primary key(oferta,perfil)
   7  );
 
-Tabla creada.
+Table created.
 
 SQL> create table FUNCIONES(
   2  	     idFun number,
@@ -277,7 +284,7 @@ SQL> create table FUNCIONES(
   6  	     constraint pk_funciones primary key(idFun)
   7  );
 
-Tabla creada.
+Table created.
 
 SQL> create table BIBLIOTECAS(
   2  	     oferta number,
@@ -287,7 +294,7 @@ SQL> create table BIBLIOTECAS(
   6  	     constraint pk_bibliotecas primary key(oferta,funcion)
   7  );
 
-Tabla creada.
+Table created.
 
 SQL> create table REQUISITOS(
   2  	     idReq number,
@@ -295,7 +302,7 @@ SQL> create table REQUISITOS(
   4  	     constraint pk_requisitos primary key(idReq)
   5  );
 
-Tabla creada.
+Table created.
 
 SQL> create table ESPECIFICACIONES(
   2  	     oferta number,
@@ -305,6 +312,6 @@ SQL> create table ESPECIFICACIONES(
   6  	     constraint pk_especificaciones primary key(oferta,requisito)
   7  );
 
-Tabla creada.
+Table created.
 
 SQL> spo off
