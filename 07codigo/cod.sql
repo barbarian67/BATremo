@@ -1,5 +1,4 @@
 -- Privilegios sobre objetos del esquema. API. Semántica imperativa
-
 --Dar capacidad de poblar a los alumnos de primero y crear sinónimos públicos para cada una de las tablas 
 conn BAT/bat@fa
 declare
