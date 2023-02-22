@@ -107,8 +107,8 @@ create table CONTACTOS(
 	contacto number,
 	mailcon varchar2(50),
 	movcon	varchar2(20),
-	empresa number,
-	constraint fk_03 foreign key(empresa) references EMPRESAS(idEmp),
+	sede number,
+	constraint fk_03 foreign key(sede) references SEDES(idSed),
 	constraint fk_J1_A foreign key(contacto) references EMPLEADOS(idem),
 	constraint pk_contactos primary key(contacto)	
 );
